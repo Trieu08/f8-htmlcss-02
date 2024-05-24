@@ -13,6 +13,7 @@ body {
 
 :root {
     --font-public: "Sen", sans-serif;
+    --primary-color: #ffb900;
 }
 
 /* Common */
@@ -25,6 +26,21 @@ body {
 
 a {
     text-decoration: none;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp, 1);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-3 {
+    --line-clamp: 3;
+}
+
+.word-beak-all {
+    word-break: break-all;
 }
 
 .btn {
@@ -51,7 +67,7 @@ a {
     z-index: 1;
     margin-top: 36px;
     padding: 11px 0;
-    background-color: #f6edd8;
+    background-color: #f5f0e7;
 }
 
 .header .body {
@@ -105,7 +121,7 @@ a {
 /* ====Hero==== */
 .hero {
     padding: 56px 0 65px;
-    background-color: #f6edd8;
+    background-color: #f5f0e7;
 }
 
 .hero .row {
@@ -264,7 +280,13 @@ a {
     margin-top: 200px;
 }
 
-.popular .introduce .title {
+.popular .introduce {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular .info .title {
     color: #171100;
     font-family: var(--font-public);
     font-size: 3.8rem;
@@ -273,49 +295,61 @@ a {
     letter-spacing: -0.76px;
 }
 
-.popular .introduce {
-    position: relative;
-}
-
-.popular .switch-arrow {
-    position: absolute;
-    right: 0;
-    bottom: 2px;
-    display: flex;
-}
-
-.popular .switch-arrow a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 14px;
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgb(249, 221, 65);
-    border-radius: 50%;
-    background-color: #fff;
-}
-
-.popular .introduce .desc {
-    margin-top: 22px;
+.popular .info .desc {
+    margin-top: 16px;
+    width: 458px;
     color: #5f5b53;
     font-size: 1.8rem;
     font-weight: 400;
     line-height: 1.67;
 }
 
-.popular .list {
+.popular .switchs {
     display: flex;
-    justify-content: space-between;
+    gap: 18px;
+}
+
+.popular .switchs .switch-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    color: var(--primary-color);
+    background-color: transparent;
+}
+
+.popular .switchs .switch-btn:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.popular .list-course {
+    display: flex;
+    gap: 30px;
     margin-top: 55px;
 }
 
-.popular .item {
-    width: 31%;
+.popular .item-course {
+    flex: 1;
+    border-radius: 12px;
+    border: 1px solid #e2dfda;
+    background: #fff;
 }
 
-.popular .item .thumb {
-    width: 370px;
+.popular .item-course:hover {
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0px 18px 36px 0px rgba(0, 0, 0, 0.05);
+    border-color: transparent;
+}
+
+.popular .item-course .thumb {
+    margin: -1px;
+    width: calc(100% + 2px);
     height: 278px;
     object-fit: cover;
     border-radius: 12px 12px 0px 0px;
@@ -328,7 +362,8 @@ a {
     padding: 16px 22px 0;
 }
 
-.popular .rating-course .sub-title {
+.popular .rating-course .sub-title a {
+    padding-right: 6px;
     color: #171100;
     font-size: 1.8rem;
     font-weight: 600;
@@ -341,7 +376,7 @@ a {
     justify-content: center;
 }
 
-.popular .rating span {
+.popular .rating .value {
     margin-left: 6px;
     color: #fea31b;
     font-size: 1.6rem;
@@ -349,7 +384,7 @@ a {
     line-height: 1.75;
 }
 
-.popular .item .desc {
+.popular .item-course .desc {
     padding: 6px 22px 0;
     color: #5f5b53;
     font-size: 1.4rem;
@@ -364,13 +399,155 @@ a {
     padding: 12px 22px 22px;
 }
 
-.popular .price-order strong {
+.popular .price-order .price {
     color: #171100;
     font-size: 1.8rem;
     font-weight: 600;
     line-height: 1.67;
 }
 
-.popular .price-order .btn-popular {
+.popular .price-order .btn-popular:hover {
     background-color: #ffb900;
+}
+
+/* =====Feedback====== */
+.feedback {
+    margin-top: 200px;
+    padding: 96px 0;
+    background-color: #2e2100;
+}
+
+.feedback-list {
+    display: flex;
+    overflow: hidden;
+}
+
+.feedback-item {
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.feedback-item .info-user .avatar {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.feedback-item .info-user .name {
+    margin-top: 18px;
+    color: #f7f7f7;
+    font-size: 2.4rem;
+    font-family: var(--font-public);
+    font-weight: 700;
+    line-height: 1.42;
+}
+
+.feedback-item .info-user .job {
+    margin: 4px 0 28px 0;
+    color: #bfbcb2;
+    font-size: 1.4rem;
+    line-height: 1.86;
+}
+
+.feedback-item .dots {
+    display: flex;
+    cursor: pointer;
+}
+
+.feedback-item .dot {
+    margin-right: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #634700;
+}
+
+.feedback-item .dot.active {
+    background-color: #ffb900;
+    cursor: default;
+}
+
+.feedback-item .quote-block {
+    width: 770px;
+}
+
+.feedback-item blockquote {
+    margin-left: 30px;
+    color: #fff;
+    font-size: 2.6rem;
+    font-style: italic;
+    line-height: 1.54;
+}
+
+/* Features */
+
+.features {
+    margin-top: 200px;
+    background-color: orange;
+}
+
+.body-features {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-features .img-block {
+    display: flex;
+    gap: 30px;
+    width: 570px;
+}
+.body-features .img-block .thumb {
+    width: 270px;
+    height: 404px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.body-features .img-block .thumb:first-child {
+    margin-top: 34px;
+}
+
+.info-features {
+    margin-top: 58px;
+    width: 470px;
+}
+
+.info-features .title,
+.info-features-2 .title {
+    color: #171100;
+    font-family: var(--font-public);
+    font-size: 3.8rem;
+    font-weight: 700;
+    line-height: 1.26;
+    letter-spacing: -0.76px;
+}
+
+.info-features .desc,
+.info-features-2 .desc {
+    margin: 16px 0;
+    color: #5f5b53;
+    font-size: 1.6rem;
+    line-height: 1.75;
+}
+
+.body-features .btn-features {
+    margin-top: 16px;
+    background-color: #ffb900;
+}
+
+/* Features-2 */
+
+.info-features-2 {
+    width: 570px;
+}
+
+.body-features .img-block-2 .thumb {
+    margin-bottom: -3px;
+    width: 470px;
+    height: 440px;
+    object-fit: cover;
+    object-position: 0 -280px;
+    border-radius: 20px;
 }
